@@ -1,0 +1,20 @@
+diff --git a/Makefile.am b/Makefile.am
+index 6b5b761..4ca6921 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -7,10 +7,10 @@ EXTRA_DIST = udev/91-usb-x10-controllers.rules hotplug2/20-usb-x10 hotplug2/moch
+ 	     apps/rfsectopl3.pl apps/x10-tk.py apps/mochad.scr
+ 
+ install-exec-hook:
+-	if test -d /etc/udev/rules.d ; then \
+-		cp $(abs_top_srcdir)/udev/91-usb-x10-controllers.rules /etc/udev/rules.d ; \
++	if test -d $(DESTDIR)/etc/udev/rules.d ; then \
++		cp $(abs_top_srcdir)/udev/91-usb-x10-controllers.rules $(DESTDIR)/etc/udev/rules.d ; \
+ 	fi ;
+-	if test -d /etc/hotplug.d/usb ; then \
+-		cp $(abs_top_srcdir)/hotplug2/20-usb-x10 /etc/hotplug.d/usb ; \
+-		cp $(abs_top_srcdir)/hotplug2/mochad /etc/init.d ; \
++	if test -d $(DESTDIR)/etc/hotplug.d/usb ; then \
++		cp $(abs_top_srcdir)/hotplug2/20-usb-x10 $(DESTDIR)/etc/hotplug.d/usb ; \
++		cp $(abs_top_srcdir)/hotplug2/mochad $(DESTDIR)/etc/init.d ; \
+ 	fi ;
