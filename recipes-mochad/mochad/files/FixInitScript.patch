@@ -1,0 +1,17 @@
+diff --git a/hotplug2/mochad b/hotplug2/mochad
+index 88eae95..0166412 100755
+--- a/hotplug2/mochad
++++ b/hotplug2/mochad
+@@ -1,10 +1,10 @@
+-#!/bin/sh /etc/rc.common
++#!/bin/sh
+ START=50
+ 
+ SSD=start-stop-daemon
+ NAME=mochad
+ PIDF=/var/run/$NAME.pid
+-PROG=/usr/sbin/$NAME
++PROG=/usr/bin/$NAME
+ 
+ start() {
+ 	$SSD -S -m -p $PIDF -q -x $PROG &

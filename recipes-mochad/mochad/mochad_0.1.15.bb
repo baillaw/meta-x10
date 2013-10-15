@@ -8,6 +8,7 @@ RDEPENDS_${PN}-cgi = " ${PN} apache2 perl"
 
 SRC_URI = "http://freefr.dl.sourceforge.net/mochad/mochad-${PV}.tar.gz \
 		   file://FixInstallUdevRules.patch \
+		   file://FixInitScript.patch \
 		  "
 inherit autotools update-rc.d
 SRC_URI[md5sum] = "e1de0c9e62e10236542e70c2f33aacc2"
