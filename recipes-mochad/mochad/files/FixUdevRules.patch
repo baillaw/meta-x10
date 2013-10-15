@@ -1,0 +1,9 @@
+diff --git a/udev/91-usb-x10-controllers.rules b/udev/91-usb-x10-controllers.rules
+index c2d9709..0b3dacc 100644
+--- a/udev/91-usb-x10-controllers.rules
++++ b/udev/91-usb-x10-controllers.rules
+@@ -1,2 +1,2 @@
+-SUBSYSTEM=="usb", ATTR{idVendor}=="0bc7", ATTR{idProduct}=="0001", RUN+="/usr/local/bin/mochad"
+-SUBSYSTEM=="usb", ATTR{idVendor}=="0bc7", ATTR{idProduct}=="0002", RUN+="/usr/local/bin/mochad"
++SUBSYSTEM=="usb", ATTR{idVendor}=="0bc7", ATTR{idProduct}=="0001", RUN+="/usr/bin/mochad"
++SUBSYSTEM=="usb", ATTR{idVendor}=="0bc7", ATTR{idProduct}=="0002", RUN+="/usr/bin/mochad"
