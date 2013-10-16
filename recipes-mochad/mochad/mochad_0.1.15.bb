@@ -4,7 +4,7 @@ LICENSE = "GPLv3"
 LIC_FILES_CHKSUM = "file://COPYING;md5=d32239bcb673463ab874e80d47fae504"
 DEPENDS = " libusb1 "
 RDEPENDS_${PN} = " libusb1 "
-RDEPENDS_${PN}-cgi = " ${PN} apache2 perl"
+RDEPENDS_${PN}-cgi = " ${PN} apache2 perl perl-module-socket"
 
 SRC_URI = "http://freefr.dl.sourceforge.net/mochad/mochad-${PV}.tar.gz \
 		   file://FixInstallUdevRules.patch \
