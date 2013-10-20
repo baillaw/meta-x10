@@ -11,6 +11,7 @@ SRC_URI = "http://freefr.dl.sourceforge.net/mochad/mochad-${PV}.tar.gz \
 		   file://FixInitScript.patch \
 		   file://FixUdevRules.patch \
 		  "
+SRC_URI += "file://x10.cgi"
 inherit autotools update-rc.d
 SRC_URI[md5sum] = "6073a6e0d865587defacc4ea00b6c298"
 SRC_URI[sha256sum] = "6e7e5b953ae1350e246fd50b87a1b1a0ea628a4a66f641117a1d2521e0a309ec"
@@ -31,7 +32,10 @@ mkdir -p ${D}/${datadir}/apache2/cgi-bin
 autotools_do_install_append() {
 # Copy cgi script into cgi-bin directory of apache2. In Yocto it is {datadir}/apache2/cgi-bin/
 cp cgi/* ${D}/${datadir}/apache2/cgi-bin/
-chmod +x ${D}/${datadir}/apache2/cgi-bin/x10.pl
+# Delete native x10.pl script 
+rm ${D}/${datadir}/apache2/cgi-bin/x10.pl
+cp ${WORKDIR}/x10.cgi ${D}/${datadir}/apache2/cgi-bin/
+chmod +x ${D}/${datadir}/apache2/cgi-bin/x10.cgi
 }
 
 FILES_${PN} +=  "${sysconfdir}/init.d/mochad"
