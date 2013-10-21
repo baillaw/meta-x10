@@ -42,11 +42,11 @@ sub paintform
             <P>
             <input type="submit"   name="UnitA1" value="On">
             <input type="submit"   name="UnitA1" value="Off">
-            <label>Living(A1)</label><br>
+            <label>A1 Module</label><br>
 
             <input type="submit"   name="UnitA2" value="On">
             <input type="submit"   name="UnitA2" value="Off">
-            <label>Garage(A2)</label><br>
+            <label>A2 Module</label><br>
 
             </P>
         </form>
@@ -70,7 +70,6 @@ else {
     $unitcode = "";
     foreach $varname (keys (%in)) {
         $varvalue = $in{$varname};
-        #print "$varname = $varvalue<br>";
         if ($varname eq "Function") {
             $x10func = $varvalue;
         }
@@ -86,10 +85,9 @@ else {
             print "Unknown varname $varname<br>";
         }
     }
-    if ($housecode ne "") {
+    if ($x10func ne "") {
         # Change blanks to underlines in function names
         $x10func =~ tr/ /_/;
-        #print "pl $housecode$unitcode $x10func<br>\n";
         if ($x10func eq "Arm") {
             netcat($server, $port, "rfsec 0x11 arm\n");
         }
