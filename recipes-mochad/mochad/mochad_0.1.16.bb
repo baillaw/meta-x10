@@ -31,7 +31,7 @@ mkdir -p ${D}/${datadir}/apache2/cgi-bin
 
 autotools_do_install_append() {
 # Copy cgi script into cgi-bin directory of apache2. In Yocto it is {datadir}/apache2/cgi-bin/
-cp cgi/* ${D}/${datadir}/apache2/cgi-bin/
+cp ${S}/cgi/* ${D}/${datadir}/apache2/cgi-bin/
 # Delete native x10.pl script 
 rm ${D}/${datadir}/apache2/cgi-bin/x10.pl
 cp ${WORKDIR}/x10.cgi ${D}/${datadir}/apache2/cgi-bin/
