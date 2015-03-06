@@ -1,7 +1,5 @@
 SUMMARY = "X10 Deamon manager"
 HOMEPAGE = "freefr.dl.sourceforge.net"
-LICENSE = "GPLv3"
-LIC_FILES_CHKSUM = "file://COPYING;md5=d32239bcb673463ab874e80d47fae504"
 DEPENDS = " libusb1 "
 RDEPENDS_${PN} = " libusb1 "
 RDEPENDS_${PN}-cgi = " ${PN} apache2 perl perl-module-socket"
@@ -11,9 +9,9 @@ SRC_URI = "http://freefr.dl.sourceforge.net/mochad/mochad-${PV}.tar.gz \
 		   file://FixInitScript.patch \
 		   file://FixUdevRules.patch \
 		  "
+SRC_URI += "file://x10.cgi"
 inherit autotools update-rc.d
-SRC_URI[md5sum] = "e1de0c9e62e10236542e70c2f33aacc2"
-SRC_URI[sha256sum] = "a329ddcd7e95c169e7e37f9d37bb1146da6617be2f7325e7b6ffd0314962036f"
+
 
 PACKAGES += "${PN}-cgi"
 INITSCRIPT_NAME = "mochad"
@@ -29,8 +27,11 @@ mkdir -p ${D}/${datadir}/apache2/cgi-bin
 
 autotools_do_install_append() {
 # Copy cgi script into cgi-bin directory of apache2. In Yocto it is {datadir}/apache2/cgi-bin/
-cp cgi/* ${D}/${datadir}/apache2/cgi-bin/
-chmod +x ${D}/${datadir}/apache2/cgi-bin/x10.pl
+cp ${S}/cgi/* ${D}/${datadir}/apache2/cgi-bin/
+# Delete native x10.pl script 
+rm ${D}/${datadir}/apache2/cgi-bin/x10.pl
+cp ${WORKDIR}/x10.cgi ${D}/${datadir}/apache2/cgi-bin/
+chmod +x ${D}/${datadir}/apache2/cgi-bin/x10.cgi
 }
 
 FILES_${PN} +=  "${sysconfdir}/init.d/mochad"
